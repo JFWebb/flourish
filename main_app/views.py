@@ -3,18 +3,6 @@ from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
-class Post:
-    def __init__(self, timeint, timeunit, timestamp, description, user):
-        self.timeint = timeint,
-        self.timeunit = timeunit,
-        self.timestamp = timestamp,
-        self.description = description,
-        self.user = user
-
-posts = [
-    Post(3, 'minute', '12/12/2121 5:00pm', 'quick hands practice', 'jfwebb'),
-    Post(2, 'minute', '01/04/2006 4:00pm', 'eyes practice', 'msteele')
-]
 
 def signup (request):
     error_message = ''
