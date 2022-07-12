@@ -28,8 +28,12 @@ class Post(models.Model):
 class Photo_Pair(models.Model):
     ref_url = models.CharField(max_length=250)
     art_url = models.CharField(max_length=250)
+    ref_cred = models.CharField(max_length=250)
     post = models.OneToOneField(
         Post,
         on_delete=models.CASCADE,
         primary_key=True,
     )
+
+    def __str__(self):
+        return f"photos for post_id: {self.post} @{self.ref_url} and @{self.art_url}"

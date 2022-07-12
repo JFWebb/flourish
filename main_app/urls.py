@@ -9,5 +9,5 @@ urlpatterns = [
     path('posts/create', views.add_post, name='post_create'),
     path('posts/<int:pk>/update', views.PostUpdate.as_view(), name='post_update'),
     path('posts/<int:pk>/delete', views.PostDelete.as_view(), name='post_delete'),
-    path('accounts/signup/', views.signup, name='signup')
+    path('accounts/signup/', views.signup, name='signup'),
 ]

@@ -25,11 +25,14 @@
                 </ul>
                 <ul class="right">
                     <li><a href="{% url 'about' %}">About</a></li>
+                    {% if user.is_authenticated %}
                     <li><a href="{% url 'posts' %}">Posts</a></li>
                     <li><a href="{% url 'post_create' %}">New Post</a></li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    {% else %}
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     <li><a href="{% url 'login' %}">Log In</a></li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -39,7 +42,11 @@
         {% block content %} {% endblock %}
     </main>
     <footer class="page-footer">
-        <div class="right"> Links for Flourish </div>
+        <div class="center"><p>By Julie Webb | <a href="Github.com/JFWebb" target="blank" class="footerlink">Github.com/JFWebb</a> | <a href="https://twitter.com/juliefwebb" target="blank" class="footerlink">Twitter.com/JulieFWebb</a></p>
+    </footer>
+
+</body>
+</div>
     </footer>
     
 </body>

@@ -4,13 +4,19 @@
 {% else %}
 <h1> Add Post </h1>
 {% endif %}
-<form action="" method="post">
-  {% csrf_token %}
-  <table>
-    {{ photo_form.as_p }}
+<form 
+    action="" 
+    enctype="multipart/form-data"
+    method="POST"
+    class="card-panel"
+>
+    {% csrf_token %}
+    <input type="file" name="ref_url" />
+    <input type="file" name="art_url" />
+    <input type="text" name="ref_cred" />
     {{ post_form.as_p }}
-  </table>
-  <input type="submit" value="Submit!" class="btn" />
+
+    <input type="submit" value="Submit!" class="btn" />
 </form>
 
 <script>
