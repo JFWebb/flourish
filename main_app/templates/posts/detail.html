@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+
+<img class="responsive-img card-panel" src="{{ post.photo_pair.art_url }}">
+<img class="responsive-img card-panel" src="{{ post.photo_pair.ref_url }}">
+<p>Timeframe: {{ post.time_int }} {{ post.time_unit }}</p> 
+<p>Posted: {{ post.time_stamp }}</p>
+<p>Description: {{ post.desc }} </p>
+<div class="card-action">
+    <a href="{% url 'post_update' post.id %}">Edit</a>
+    <a href="{% url 'post_delete' post.id %}">Delete</a>
+</div>
+
+{% endblock %}

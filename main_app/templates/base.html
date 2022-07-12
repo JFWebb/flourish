@@ -26,6 +26,7 @@
                 <ul class="right">
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'posts' %}">Posts</a></li>
+                    <li><a href="{% url 'post_create' %}">New Post</a></li>
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     <li><a href="{% url 'login' %}">Log In</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -34,11 +35,11 @@
         </nav>
 
     </header>
-    <main>
+    <main class="container">
         {% block content %} {% endblock %}
     </main>
-    <footer>
-
+    <footer class="page-footer">
+        <div class="right"> Links for Flourish </div>
     </footer>
     
 </body>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<h1>Post List</h1>
+
+{% for post in posts %}
+<div class="card">
+    <a href="{% url 'detail' post.id %}">
+        <div class = "card-content">
+            <img class="responsive-img card-panel" src="{{ post.photo_pair.art_url }}">
+            <img class="responsive-img card-panel" src="{{ post.photo_pair.ref_url }}">
+            <p>{{ post.desc }}</p> 
+        </div>
+    </a>
+</div>
+{% endfor %} {% endblock %}
