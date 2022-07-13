@@ -1,1 +1,1 @@
-‘web: gunicorn flourish.wsgi’
+web: gunicorn flourish.wsgi

@@ -10,25 +10,30 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </head>
 <body>
     <header class="navbar-fixed">
-        <nav>
+        <nav class="white z-depth-0">
             <div class="nav-wrapper">
                 <ul>
                     <li>
-                        <a href="/index" class="left brand-logo">&nbsp;&nbsp;Flourish </a>
+                        <a href="/" class="left brand-logo black-text" id="logo">&nbsp;&nbsp;Flourish </a>
                     </li>
                 </ul>
-                <ul class="right">
-                    <li><a href="{% url 'about' %}">About</a></li>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul style="margin-left:150px;" class="left hide-on-med-and-down">
+                    <li><a class="light-green-text text-darken-1" href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'posts' %}">Posts</a></li>
-                    <li><a href="{% url 'post_create' %}">New Post</a></li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a class="light-green-text text-darken-1"href="{% url 'posts' %}">Posts</a></li>
+                </ul>
+                <ul class="right">
+                    <li><a href="{% url 'post_create' %}" class="btn light-green darken-1" >+ New Post</a></li>
+                    <li><a href="{% url 'logout' %}" class="btn  light-green darken-1" >Log Out</a></li>
                     {% else %}
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     <li><a href="{% url 'login' %}">Log In</a></li>
@@ -40,14 +45,23 @@
     </header>
     <main class="container">
         {% block content %} {% endblock %}
+        {% if user.is_authenticated %}
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large  light-green darken-1
+            " href="{% url 'post_create' %}">
+              <i class="large material-icons">mode_edit</i>
+            </a>
+        </div>
+        {% endif %}
     </main>
-    <footer class="page-footer">
-        <div class="center"><p>By Julie Webb | <a href="Github.com/JFWebb" target="blank" class="footerlink">Github.com/JFWebb</a> | <a href="https://twitter.com/juliefwebb" target="blank" class="footerlink">Twitter.com/JulieFWebb</a></p>
+    <footer class="page-foote white z-depth-0">
+        <div class="center light-green-text text-darken-1"><p>By Julie Webb | <a href="Github.com/JFWebb" target="blank" class="footerlink">Github.com/JFWebb</a> | <a href="https://twitter.com/juliefwebb" target="blank" class="footerlink">Twitter.com/JulieFWebb</a></p>
     </footer>
-
 </body>
-</div>
-    </footer>
-    
-</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, options);
+    });
+</script>   
 </html>
