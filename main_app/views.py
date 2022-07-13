@@ -11,8 +11,8 @@ from .forms import Post_Form
 import uuid
 import boto3
 
-session = boto3.Session(profile_name='flourish')
-dev_s3_client = session.client('s3')
+# session = boto3.Session(profile_name='flourish')
+# dev_s3_client = session.client('s3')
 S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
 BUCKET = 'flourish-jfw'
 
