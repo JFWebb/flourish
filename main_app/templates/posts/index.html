@@ -15,8 +15,9 @@
             </a>
         </div>
         <card class="card-body">
-            <p  class="card-text">{{ post.time_stamp }}</p> 
-            <p  class="card-text">{{ post.desc }}</p> 
+            <p>Posted: {{ post.time_stamp }}</p>
+            <p>Timeframe: {{ post.time_int }} {{ post.get_time_unit_display}}</p> 
+            <p>Description: {{ post.desc }} </p>
         </card>
         </div>
     </div>
