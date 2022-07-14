@@ -1,17 +1,21 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Welcome to Flourish</h1>
-<h2>Flourish is an app that lets you track your figure drawing progress over time</h2>
+{% load crispy_forms_tags %} 
+<div class="container">
+    <div class="card mx-auto d-block m-3 p-4">
+        <h1 id="welcome">Welcome to Flourish</h1>
+        <h2 class="fs-4" id="tagline">Flourish is an app that lets you track your figure drawing progress over time</h2>
+        <br />
+        <h3>Sign Up To Get Started</h3>
 
-<h3>Sign Up</h3>
-
-{% if error_message %}
-<p class="red-text">{{ error_message }}</p>
-{% endif %}
+        {% if error_message %}
+        <p class="red-text">{{ error_message }}</p>
+        {% endif %}
 
 
-<form method="POST" action="{% url 'signup' %}">
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" class="btn" value="Sign Up" />
-</form>
-
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %} {{ form|crispy }}
+            <input type="submit" class="btn btn-success" value="Sign Up" />
+        </form>
+    </div>
+</div>
 {% endblock %}

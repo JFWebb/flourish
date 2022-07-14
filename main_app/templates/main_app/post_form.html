@@ -1,26 +1,34 @@
 {% extends 'base.html' %} {% block content %}
-{% if object %}
-<h1> Edit Post </h1>
-{% else %}
-<h1> Add Post </h1>
-{% endif %}
-<form 
-    action="" 
-    enctype="multipart/form-data"
-    method="POST"
-    class="card-panel"
->
-    {% csrf_token %}
-    <input type="file" name="ref_url" />
-    <input type="file" name="art_url" />
-    <input type="text" name="ref_cred" />
-    {{ post_form.as_p }}
-
-    <input type="submit" value="Submit!" class="btn" />
-</form>
-
-<script>
-    var selectEl = document.getElementById("id_time_unit");
-    M.FormSelect.init(selectEl);
-</script>
+<div class="container">
+    <div class="card mx-auto d-block m-3 p-4">
+        {% if object %}
+        <h1> Edit Post </h1>
+        <img class="responsive-img card-panel" src="{{ object.photo_pair.art_url }}">
+        <img class="responsive-img card-panel" src="{{ object.photo_pair.ref_url }}">
+        <br /><br />
+        {% else %}
+        <h1> Add Post </h1>
+        {% endif %}
+        <form 
+            action="" 
+            enctype="multipart/form-data"
+            method="POST"
+            class="card-panel"
+        >
+            {% csrf_token %}
+            {% if object %}
+            {{ form.as_p }}
+            {% else %}
+            <label for="ref_url" class="form-label">Reference Image</label>
+            <input type="file" name="ref_url" class="form-control"/>
+            <label for="art_url" class="form-label">Art Image</label>
+            <input type="file" name="art_url" class="form-control"/>
+            <label for="ref_cred" class="form-label">Reference Credit/Source</label>
+            <input type="text" name="ref_cred" class="form-control"/>
+            {{ post_form.as_p }}
+            {% endif %}
+            <input type="submit" value="Submit!" class="btn btn-success" />
+        </form>
+    </div>
+</div>
 {% endblock %}

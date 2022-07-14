@@ -1,13 +1,30 @@
 {% extends 'base.html' %} {% block content %}
 
-<img class="responsive-img card-panel" src="{{ post.photo_pair.art_url }}">
-<img class="responsive-img card-panel" src="{{ post.photo_pair.ref_url }}">
-<p>Timeframe: {{ post.time_int }} {{ post.time_unit }}</p> 
-<p>Posted: {{ post.time_stamp }}</p>
-<p>Description: {{ post.desc }} </p>
-<div class="card-action">
-    <a href="{% url 'post_update' post.id %}">Edit</a>
-    <a href="{% url 'post_delete' post.id %}">Delete</a>
+<div class="container">
+    <div class="card mx-auto d-block m-3 p-4" style="width: 30rem;">
+        <div class = "card-content">
+            <a href="{% url 'detail' post.id %}">
+                <div class="row">
+                    <div class="col">
+                     <img class="img-fluid mx-auto d-block" src="{{ post.photo_pair.art_url }}">
+                    </div>
+                    <div class="col">
+                     <img class="img-fluid mx-auto d-block" src="{{ post.photo_pair.ref_url }}">
+                    </div>
+                </div>           
+            </a>
+        </div>
+        <card class="card-body">
+            <p>Timeframe: {{ post.time_int }} {{ post.get_time_unit_display}}</p> 
+            <p>Posted: {{ post.time_stamp }}</p>
+            <p>Description: {{ post.desc }} </p>
+            <div class="card-action">
+                <a type="button" class="btn btn-success text-nowrap  btn-sm m-1" href="{% url 'post_update' post.id %}">Edit</a>
+                <a type="button" class="btn btn-success text-nowrap  btn-sm m-1" href="{% url 'post_delete' post.id %}">Delete</a>
+            </div>
+        </card>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

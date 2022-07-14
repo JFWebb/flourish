@@ -29,7 +29,9 @@ def signup (request):
     else:
         error_message = 'Invalid Sign Up - Try Again'
     form = UserCreationForm()
+    
     context = {'form': form, 'error_message': error_message}
+
     return render(request, 'registration/signup.html', context)
 
 def home(request):
@@ -95,11 +97,10 @@ def add_post(request):
     return render(request, 'main_app/post_form.html', {'post_form': post_form})
 
 
-
-
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = fields = ['time_int', 'time_unit', 'desc']
+    fields = ['time_int', 'time_unit', 'desc']
+
 
 class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post

@@ -6,62 +6,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flourish</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    </head>
 <body>
-    <header class="navbar-fixed">
-        <nav class="white z-depth-0">
-            <div class="nav-wrapper">
-                <ul>
-                    <li>
-                        <a href="/" class="left brand-logo black-text" id="logo">&nbsp;&nbsp;Flourish </a>
-                    </li>
-                </ul>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul style="margin-left:150px;" class="left hide-on-med-and-down">
-                    <li><a class="light-green-text text-darken-1" href="{% url 'about' %}">About</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a class="light-green-text text-darken-1"href="{% url 'posts' %}">Posts</a></li>
-                </ul>
-                <ul class="right">
-                    <li><a href="{% url 'post_create' %}" class="btn light-green darken-1" >+ New Post</a></li>
-                    <li><a href="{% url 'logout' %}" class="btn  light-green darken-1" >Log Out</a></li>
-                    {% else %}
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
-                    {% endif %}
-                </ul>
+    <header class="row" id="navigation">
+        <nav class="navbar fixed-top navbar-expand-lg bg-white" id="navigation">
+            <div class="container-fluid">
+                <a href="/" class="navbar-brand" id="logo">&nbsp;&nbsp;Flourish </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav  ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'posts' %}">Posts</a></li>
+                        
+                        <li class="nav-item"><a type="button" class="btn btn-outline-success -sm text-nowrap btn-sm  m-1" href="{% url 'post_create' %}" >+ New Post</a></li>
+                        <li class="nav-item"><a type="button" class="btn btn-success text-nowrap  btn-sm m-1" href="{% url 'logout' %}">Log Out</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+                        </div>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
         </nav>
 
     </header>
     <main class="container">
         {% block content %} {% endblock %}
-        {% if user.is_authenticated %}
-        <div class="fixed-action-btn">
-            <a class="btn-floating btn-large  light-green darken-1
-            " href="{% url 'post_create' %}">
-              <i class="large material-icons">mode_edit</i>
-            </a>
-        </div>
-        {% endif %}
     </main>
-    <footer class="page-foote white z-depth-0">
-        <div class="center light-green-text text-darken-1"><p>By Julie Webb | <a href="Github.com/JFWebb" target="blank" class="footerlink">Github.com/JFWebb</a> | <a href="https://twitter.com/juliefwebb" target="blank" class="footerlink">Twitter.com/JulieFWebb</a></p>
+    <footer class="row">
+       
     </footer>
 </body>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(elems, options);
-    });
-</script>   
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> 
 </html>
